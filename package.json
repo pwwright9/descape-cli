@@ -1,0 +1,20 @@
+{
+  "name": "descape",
+  "version": "0.1.0",
+  "description": "Strip terminal escape sequences from a stream, without buffering the whole input.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "descape": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
