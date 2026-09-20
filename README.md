@@ -56,6 +56,18 @@ node dist/index.js < some.log
 There are no runtime dependencies; TypeScript is the only devDependency
 and is only needed to compile `src/` to `dist/`.
 
+## testing
+
+```sh
+npm test
+```
+
+Tests use Node's built-in `node:test` runner, so there's no extra
+dependency for this either. Most of them exist to check the one thing a
+byte-level state machine is most likely to get wrong: a sequence arriving
+split across two `_transform` calls. Each covered sequence is tried at
+every possible split point, including right after the initial ESC.
+
 ## status
 
 Early skeleton. Handles CSI sequences (colors, cursor movement), OSC
