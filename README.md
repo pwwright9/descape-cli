@@ -29,7 +29,8 @@ descape < raw.log > clean.log
 docker logs -f my-container | descape | grep ERROR
 ```
 
-`descape --help` prints a short usage message.
+`descape --help` prints a short usage message. `descape --version` prints the
+installed version.
 
 ## why streaming matters here
 

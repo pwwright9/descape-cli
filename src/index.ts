@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { readFileSync } from 'node:fs';
 import { AnsiStripStream } from './stripAnsi.js';
 
 function printUsage(): void {
@@ -15,10 +16,21 @@ function printUsage(): void {
   );
 }
 
+function printVersion(): void {
+  // package.json lives one level up from the compiled dist/index.js.
+  const pkgUrl = new URL('../package.json', import.meta.url);
+  const pkg = JSON.parse(readFileSync(pkgUrl, 'utf8')) as { version: string };
+  process.stdout.write(`${pkg.version}\n`);
+}
+
 function main(): void {
   const args = process.argv.slice(2);
   if (args.includes('--help') || args.includes('-h')) {
     printUsage();
+    return;
+  }
+  if (args.includes('--version') || args.includes('-v')) {
+    printVersion();
     return;
   }
 
